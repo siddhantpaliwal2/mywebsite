@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import './App.css';
 import Home from './Home';
 import Projects from './Projects';
@@ -38,6 +38,7 @@ function App() {
         </header>
         <main className="App-main">
           <Routes>
+            <Route path="/" element={<Navigate to="/home" />} />
             <Route path="/home" element={<Home triggerConfetti={triggerConfetti} confetti={confetti} />} />
             <Route path="/projects" element={<Projects />} />
           </Routes>
