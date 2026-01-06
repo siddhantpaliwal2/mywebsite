@@ -1,0 +1,273 @@
+.home-container {
+  display: flex;
+  flex-direction: row; /* Change to row for sidebar layout */
+  align-items: flex-start;
+  padding: 10px;
+  font-family: 'Tahoma', sans-serif;
+  font-size: 11px;
+  color: #000;
+  height: 100%; /* Ensure full height */
+  box-sizing: border-box;
+}
+
+.home-sidebar {
+  width: 150px;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  padding-right: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #eee;
+  color: #0058EE; /* XP Blueish */
+}
+
+.sidebar-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 8px;
+}
+
+.home-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; /* Enable scrolling for essays if they are long */
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.profile-image {
+  width: 80px;
+  height: auto;
+  margin-right: 15px;
+  border: 1px solid #888;
+  padding: 2px;
+  background: #fff;
+}
+
+.profile-intro {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.experience-item {
+  display: flex;
+  align-items: center;
+}
+
+.exp-icon-container {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.exp-icon {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.exp-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-role {
+  font-weight: normal;
+}
+
+.exp-company {
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.yc-badge {
+  height: 12px;
+  width: auto;
+  vertical-align: middle;
+}
+
+.exp-date {
+  font-size: 10px;
+  color: #666;
+}
+
+/* Links */
+a {
+  color: #000080;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Essay Styles */
+.essay-content h2 {
+  font-size: 16px;
+  color: #0058EE;
+  margin-top: 0;
+}
+.essay-content p {
+  line-height: 1.5;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+.essay-content h3 {
+  font-size: 14px;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+    padding: 8px;
+  }
+
+  .home-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+    padding-right: 0;
+    padding-bottom: 10px;
+    margin-right: 0;
+    margin-bottom: 15px;
+    height: auto;
+  }
+
+  .sidebar-title {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  .sidebar-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .sidebar-links li {
+    margin-bottom: 0;
+  }
+
+  .home-main-content {
+    padding: 0;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .profile-image {
+    width: 100px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .profile-intro {
+    font-size: 13px;
+  }
+
+  .experience-list {
+    gap: 12px;
+  }
+
+  .experience-item {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .exp-icon-container {
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .exp-role {
+    font-size: 11px;
+  }
+
+  .exp-company {
+    font-size: 11px;
+  }
+
+  .yc-badge {
+    height: 10px;
+  }
+
+  .exp-date {
+    font-size: 9px;
+  }
+
+  .essay-content h2 {
+    font-size: 15px;
+  }
+
+  .essay-content h3 {
+    font-size: 13px;
+  }
+
+  .essay-content p {
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .home-container {
+    padding: 6px;
+    font-size: 10px;
+  }
+
+  .profile-image {
+    width: 80px;
+  }
+
+  .profile-intro {
+    font-size: 12px;
+  }
+
+  .exp-icon-container {
+    width: 24px;
+    height: 24px;
+  }
+
+  .essay-content p {
+    font-size: 11px;
+  }
+}
