@@ -88,8 +88,7 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home triggerConfetti={triggerConfetti} confetti={confetti} />} />
             <Route path="/projects" element={<Projects />} />
-            {/* Redirect / to /home if you want auto-open, or remove to start with empty desktop */}
-             {/* <Route path="/" element={<Navigate to="/home" />} /> */}
+            <Route path="/" element={<Navigate to="/home" />} />
           </Routes>
         </WindowFrame>
       )}
