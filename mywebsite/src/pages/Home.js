@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import myImage from '../assets/images/profilepic.jpg';
 import bearLogo from '../assets/images/bear.png';
 import thirdChairLogo from '../assets/images/thirdchair.png';
@@ -8,20 +9,15 @@ import ycLogo from '../assets/images/yc.png';
 import './Home.css';
 import { findingStartupIdeas } from '../essays/finding-startup-ideas';
 
+const essays = {
+  'finding-startup-ideas': findingStartupIdeas,
+};
+
 function Home() {
-  const [activeEssay, setActiveEssay] = useState(null);
+  const { essaySlug } = useParams();
+  const navigate = useNavigate();
 
-  const essays = {
-    'finding-startup-ideas': findingStartupIdeas,
-  };
-
-  const handleEssayClick = (key) => {
-    setActiveEssay(essays[key]);
-  };
-
-  const handleHomeClick = () => {
-    setActiveEssay(null);
-  };
+  const activeEssay = essaySlug ? essays[essaySlug] : null;
 
   const renderProfile = () => (
     <>
@@ -95,11 +91,11 @@ function Home() {
       <div className="home-sidebar">
         <div className="sidebar-title">Menu</div>
         <ul className="sidebar-links">
-          <li><a href="#" onClick={(e) => { e.preventDefault(); handleHomeClick(); }}>Home</a></li>
+          <li><a href="#" onClick={(e) => { e.preventDefault(); navigate('/home'); }}>Home</a></li>
         </ul>
         <div className="sidebar-title" style={{marginTop: '10px'}}>Essays</div>
         <ul className="sidebar-links">
-          <li><a href="#" onClick={(e) => { e.preventDefault(); handleEssayClick('finding-startup-ideas'); }}>Finding Startup Ideas</a></li>
+          <li><a href="#" onClick={(e) => { e.preventDefault(); navigate('/home/essay/finding-startup-ideas'); }}>Finding Startup Ideas</a></li>
         </ul>
       </div>
       

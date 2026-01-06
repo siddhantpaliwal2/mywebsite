@@ -52,7 +52,14 @@ function App() {
     navigate('/');
   };
 
-  const openWindows = isWindowOpen ? [{ id: location.pathname, title: currentTitle }] : [];
+  // Use base path for window id to handle sub-routes
+  const getWindowId = () => {
+    if (location.pathname.startsWith('/home')) return '/home';
+    if (location.pathname.startsWith('/projects')) return '/projects';
+    return location.pathname;
+  };
+  
+  const openWindows = isWindowOpen ? [{ id: getWindowId(), title: currentTitle }] : [];
 
   return (
     <div className="xp-desktop">
@@ -60,7 +67,7 @@ function App() {
         <DesktopIcon 
           title="My Profile" 
           onClick={() => {
-            if (location.pathname === '/home') {
+            if (location.pathname.startsWith('/home')) {
               setIsMinimized(false);
             } else {
               navigate('/home');
@@ -109,6 +116,7 @@ function App() {
         >
           <Routes>
             <Route path="/home" element={<Home triggerConfetti={triggerConfetti} confetti={confetti} />} />
+            <Route path="/home/essay/:essaySlug" element={<Home triggerConfetti={triggerConfetti} confetti={confetti} />} />
             <Route path="/projects" element={<Projects />} />
           </Routes>
         </WindowFrame>
@@ -119,9 +127,9 @@ function App() {
       
       <Taskbar 
         openWindows={openWindows} 
-        activeWindow={isMinimized ? null : location.pathname}
+        activeWindow={isMinimized ? null : getWindowId()}
         onWindowClick={(id) => {
-          if (id === location.pathname) {
+          if (id === getWindowId()) {
             setIsMinimized(!isMinimized);
           } else {
             navigate(id);
