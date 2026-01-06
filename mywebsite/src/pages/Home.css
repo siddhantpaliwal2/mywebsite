@@ -186,15 +186,16 @@ a:hover {
   }
 
   .profile-header {
-    flex-direction: column;
-    text-align: center;
+    flex-direction: row;
+    text-align: left;
     margin-bottom: 15px;
+    align-items: center;
   }
 
   .profile-image {
-    width: 100px;
-    margin-right: 0;
-    margin-bottom: 10px;
+    width: 70px;
+    margin-right: 12px;
+    margin-bottom: 0;
   }
 
   .profile-intro {
