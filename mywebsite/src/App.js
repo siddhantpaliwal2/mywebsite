@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './styles/App.css';
 import './styles/xpTheme.css';
 import Home from './pages/Home';
@@ -22,6 +22,13 @@ function App() {
   useEffect(() => {
     setIsMinimized(false);
   }, [location.pathname]);
+
+  // Redirect to /home on initial load
+  useEffect(() => {
+    if (location.pathname === '/') {
+      navigate('/home');
+    }
+  }, [location.pathname, navigate]);
 
   const triggerConfetti = () => {
     setConfetti(true);
@@ -88,7 +95,6 @@ function App() {
           <Routes>
             <Route path="/home" element={<Home triggerConfetti={triggerConfetti} confetti={confetti} />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/" element={<Navigate to="/home" />} />
           </Routes>
         </WindowFrame>
       )}
