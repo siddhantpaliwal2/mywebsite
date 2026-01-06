@@ -19,16 +19,19 @@ function App() {
   const [confetti, setConfetti] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
 
+  const [hasInitialized, setHasInitialized] = useState(false);
+
   useEffect(() => {
     setIsMinimized(false);
   }, [location.pathname]);
 
-  // Redirect to /home on initial load
+  // Redirect to /home only on initial load
   useEffect(() => {
-    if (location.pathname === '/') {
+    if (!hasInitialized && location.pathname === '/') {
       navigate('/home');
     }
-  }, [location.pathname, navigate]);
+    setHasInitialized(true);
+  }, [location.pathname, navigate, hasInitialized]);
 
   const triggerConfetti = () => {
     setConfetti(true);
@@ -56,12 +59,24 @@ function App() {
       <div className="desktop-icons-area">
         <DesktopIcon 
           title="My Profile" 
-          onClick={() => navigate('/home')} 
+          onClick={() => {
+            if (location.pathname === '/home') {
+              setIsMinimized(false);
+            } else {
+              navigate('/home');
+            }
+          }} 
           icon={folderIcon} 
         />
         <DesktopIcon 
           title="My Projects" 
-          onClick={() => navigate('/projects')} 
+          onClick={() => {
+            if (location.pathname === '/projects') {
+              setIsMinimized(false);
+            } else {
+              navigate('/projects');
+            }
+          }} 
           icon={folderIcon}
         />
         <DesktopIcon 
